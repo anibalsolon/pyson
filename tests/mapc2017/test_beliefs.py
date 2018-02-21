@@ -8,13 +8,14 @@ from lxml import etree
 
 import pyson
 import pyson.runtime
-import pyson.mapc2017
+import mapc2017
 
 
 class BeliefTest(unittest.TestCase):
 
     def test_request_action(self):
-        agent = pyson.mapc2017.Agent()
+        env = pyson.runtime.Environment()
+        agent = mapc2017.Agent(env, "agent")
         with open(os.path.join(os.path.dirname(__file__), "request-action.xml")) as xml:
             agent.message_received(etree.parse(xml).getroot())
 
